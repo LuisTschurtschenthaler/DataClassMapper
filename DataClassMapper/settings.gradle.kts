@@ -11,6 +11,7 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
+
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
@@ -21,4 +22,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "DataClassMapper"
 include(":app")
- 
+include(":data-class-mapper")
