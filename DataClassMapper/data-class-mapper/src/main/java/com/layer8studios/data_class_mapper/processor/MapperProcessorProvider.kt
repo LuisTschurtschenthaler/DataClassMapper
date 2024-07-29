@@ -1,4 +1,4 @@
-package com.layer8studios.processor
+package com.layer8studios.data_class_mapper.processor
 
 import com.google.devtools.ksp.processing.SymbolProcessor
 import com.google.devtools.ksp.processing.SymbolProcessorEnvironment

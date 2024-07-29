@@ -1,9 +1,9 @@
 package com.layer8studios
 
-import com.layer8studios.annotation.IgnoreProperty
-import com.layer8studios.annotation.Map
-import com.layer8studios.annotation.MapCollectionObject
-import com.layer8studios.annotation.MapProperty
+import com.layer8studios.data_class_mapper.annotations.IgnoreProperty
+import com.layer8studios.data_class_mapper.annotations.Map
+import com.layer8studios.data_class_mapper.annotations.MapCollectionObject
+import com.layer8studios.data_class_mapper.annotations.MapProperty
 
 @Map(targetClass = UserDomain::class)
 data class UserApiResponse(

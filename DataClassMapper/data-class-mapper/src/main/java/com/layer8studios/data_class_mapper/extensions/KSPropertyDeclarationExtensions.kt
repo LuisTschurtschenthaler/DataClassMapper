@@ -1,4 +1,4 @@
-package com.layer8studios.processor.extensions
+package com.layer8studios.data_class_mapper.extensions
 
 import com.google.devtools.ksp.symbol.KSPropertyDeclaration
 import com.google.devtools.ksp.symbol.KSType

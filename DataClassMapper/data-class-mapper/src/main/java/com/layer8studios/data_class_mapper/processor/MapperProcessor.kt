@@ -1,4 +1,4 @@
-package com.layer8studios.processor
+package com.layer8studios.data_class_mapper.processor
 
 import com.google.devtools.ksp.processing.CodeGenerator
 import com.google.devtools.ksp.processing.Dependencies
@@ -12,20 +12,20 @@ import com.google.devtools.ksp.symbol.KSPropertyDeclaration
 import com.google.devtools.ksp.symbol.KSType
 import com.google.devtools.ksp.symbol.KSVisitorVoid
 import com.google.devtools.ksp.validate
-import com.layer8studios.annotation.IgnoreProperty
-import com.layer8studios.annotation.Map
-import com.layer8studios.annotation.MapCollectionObject
-import com.layer8studios.annotation.MapProperty
-import com.layer8studios.processor.extensions.findArgumentByName
-import com.layer8studios.processor.extensions.findPropertyByName
-import com.layer8studios.processor.extensions.getDefaultValue
-import com.layer8studios.processor.extensions.getFirstArgumentValue
-import com.layer8studios.processor.extensions.getFirstOrNullArgumentValue
-import com.layer8studios.processor.extensions.getPackageName
-import com.layer8studios.processor.extensions.getPropertyType
-import com.layer8studios.processor.extensions.getSimpleName
-import com.layer8studios.processor.extensions.isCollectionType
-import com.layer8studios.processor.extensions.isDataClass
+import com.layer8studios.data_class_mapper.annotations.IgnoreProperty
+import com.layer8studios.data_class_mapper.annotations.Map
+import com.layer8studios.data_class_mapper.annotations.MapCollectionObject
+import com.layer8studios.data_class_mapper.annotations.MapProperty
+import com.layer8studios.data_class_mapper.extensions.findArgumentByName
+import com.layer8studios.data_class_mapper.extensions.findPropertyByName
+import com.layer8studios.data_class_mapper.extensions.getDefaultValue
+import com.layer8studios.data_class_mapper.extensions.getFirstArgumentValue
+import com.layer8studios.data_class_mapper.extensions.getFirstOrNullArgumentValue
+import com.layer8studios.data_class_mapper.extensions.getPackageName
+import com.layer8studios.data_class_mapper.extensions.getPropertyType
+import com.layer8studios.data_class_mapper.extensions.getSimpleName
+import com.layer8studios.data_class_mapper.extensions.isCollectionType
+import com.layer8studios.data_class_mapper.extensions.isDataClass
 import com.squareup.kotlinpoet.ClassName
 import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.FunSpec
@@ -210,8 +210,8 @@ internal class MapperProcessor(
         targetPropertyName: String,
         targetClass: KSType?,
         defaultValue: String
-    ): String = when(targetClass != null && targetClass.declaration.getSimpleName() != "Any") {
-        true -> "\t$targetPropertyName = this.$sourcePropertyName.to${targetClass.getSimpleName()}()$defaultValue"
-        false -> "\t$targetPropertyName = this.$sourcePropertyName$defaultValue"
+    ): String = when(targetClass == null || targetClass.declaration.getSimpleName() == "Any") {
+        true -> "\t$targetPropertyName = this.$sourcePropertyName$defaultValue"
+        false -> "\t$targetPropertyName = this.$sourcePropertyName.to${targetClass.getSimpleName()}()$defaultValue"
     }
 }

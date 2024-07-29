@@ -1,4 +1,4 @@
-package com.layer8studios.annotation
+package com.layer8studios.data_class_mapper.annotations
 
 import kotlin.reflect.KClass
 
