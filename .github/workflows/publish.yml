@@ -39,6 +39,11 @@ jobs:
           echo "signing.password=${SIGNING_KEY_PASSWORD}" >> gradle.properties
           echo "signing.secretKeyRingFile=${HOME}/secret_key.gpg" >> gradle.properties
 
+      - name: Setup Xcode
+          uses: maxim-lobanov/setup-xcode@v1
+          with:
+            xcode-version: latest-stable
+            
       - name: Publish to Maven Central
         run: |
           ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
