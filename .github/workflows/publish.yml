@@ -44,6 +44,9 @@ jobs:
         with:
           xcode-version: latest-stable
 
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+
       - name: Publish to Maven Central
         run: |
           ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
