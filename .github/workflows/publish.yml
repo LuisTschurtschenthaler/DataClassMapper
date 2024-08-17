@@ -49,4 +49,4 @@ jobs:
 
       - name: Publish to Maven Central
         run: |
-          ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache
+          ./gradlew :data-class-mapper:publishAndReleaseToMavenCentral --no-configuration-cache
