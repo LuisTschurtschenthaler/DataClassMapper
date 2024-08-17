@@ -47,6 +47,11 @@ jobs:
       - name: Make gradlew executable
         run: chmod +x ./gradlew
 
-      - name: Publish to Maven Central
+      - name: Publish to Maven Central (staging only)
         run: |
-          ./gradlew :data-class-mapper:publishAndReleaseToMavenCentral --no-configuration-cache
+          ./gradlew :data-class-mapper:publishMavenPublicationToMavenCentralRepository --no-configuration-cache
+
+      - name: Release to Maven Central (only if previous step succeeds)
+        if: success()
+        run: |
+          ./gradlew :data-class-mapper:closeAndReleaseRepository --no-configuration-cache
