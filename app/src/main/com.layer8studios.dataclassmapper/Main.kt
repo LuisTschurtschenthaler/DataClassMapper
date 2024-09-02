@@ -1,4 +1,4 @@
-package com.layer8studios
+package com.layer8studios.dataclassmapper
 
 import com.layer8studios.data_class_mapper.annotations.IgnoreProperty
 import com.layer8studios.data_class_mapper.annotations.Map
